@@ -1,3 +1,5 @@
+import { REQUEST_SUCCESS } from '../actions';
+
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -6,14 +8,12 @@ const INITIAL_STATE = {
   idToEdit: 0, // valor numérico que armazena o id da despesa que esta sendo editada
 };
 
-export const CURRENCIES_FETCH = 'CURRENCIES_FETCH';
-
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case CURRENCIES_FETCH:
+  case REQUEST_SUCCESS:
     return {
       ...state,
-      currencies: action.payload,
+      currencies: action.currencies,
     };
   default:
     return state;
