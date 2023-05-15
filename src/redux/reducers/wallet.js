@@ -1,4 +1,4 @@
-import { REQUEST_SUCCESS } from '../actions';
+import { REQUEST_SUCCESS, ADD_EXPENSE } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
@@ -15,6 +15,15 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       currencies: action.currencies,
     };
+  case ADD_EXPENSE: {
+    const newExpense = { id: state.expenses.length };
+    const combinedExpense = { ...action.expenses, ...newExpense };
+    return {
+      ...state,
+      expenses: [...state.expenses, combinedExpense],
+
+    };
+  }
   default:
     return state;
   }
