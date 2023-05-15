@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addExpense, requestApi } from '../redux/actions';
+import { requestAndAddExpense, requestApi } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -26,7 +26,7 @@ class WalletForm extends Component {
 
   render() {
     const { currencies, dispatch } = this.props;
-    const { state } = this.state;
+    const { value, description, currency, payment, category } = this.state;
     return (
       <form>
         <label htmlFor="">
@@ -34,6 +34,7 @@ class WalletForm extends Component {
           <input
             type="number"
             name="value"
+            value={ value }
             id=""
             data-testid="value-input"
             onChange={ this.onInputChange }
@@ -45,6 +46,7 @@ class WalletForm extends Component {
           <input
             type="text"
             name="description"
+            value={ description }
             id=""
             data-testid="description-input"
             onChange={ this.onInputChange }
@@ -55,6 +57,7 @@ class WalletForm extends Component {
           Moeda
           <select
             name="currency"
+            value={ currency }
             id=""
             data-testid="currency-input"
             onChange={ this.onInputChange }
@@ -71,6 +74,7 @@ class WalletForm extends Component {
           Forma de Pagamento:
           <select
             name="payment"
+            value={ payment }
             id=""
             data-testid="method-input"
             onChange={ this.onInputChange }
@@ -85,6 +89,7 @@ class WalletForm extends Component {
           Categoria:
           <select
             name="category"
+            value={ category }
             id=""
             data-testid="tag-input"
             onChange={ this.onInputChange }
@@ -98,7 +103,17 @@ class WalletForm extends Component {
         </label>
         <button
           type="button"
-          onClick={ () => dispatch(addExpense(this.state)) }
+          onClick={ (event) => {
+            event.preventDefault();
+            dispatch(requestAndAddExpense(this.state));
+            this.setState({
+              value: '',
+              description: '',
+              currency: 'USD',
+              payment: 'Dinheiro',
+              category: 'Alimentação',
+            });
+          } }
         >
 
           Adicionar despesa

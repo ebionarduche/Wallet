@@ -11,9 +11,10 @@ export const submitLogin = (email) => ({
   email,
 });
 
-export const addExpense = (expenses) => ({
+export const addExpense = (expenses, data) => ({
   type: ADD_EXPENSE,
   expenses,
+  data,
 });
 
 export const requestSuccess = (currencies) => ({
@@ -25,6 +26,12 @@ export const requestFailed = (error) => ({
   type: REQUEST_FAILED,
   error,
 });
+
+export const requestAndAddExpense = (expenses) => async (dispatch) => {
+  const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const data = await response.json();
+  dispatch(addExpense(expenses, data));
+};
 
 export const requestApi = () => async (dispatch) => {
   try {
