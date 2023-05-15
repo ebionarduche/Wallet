@@ -17,11 +17,11 @@ const wallet = (state = INITIAL_STATE, action) => {
     };
   case ADD_EXPENSE: {
     const newExpense = { id: state.expenses.length };
-    console.log(state);
     const combinedExpense = { ...action.expenses, ...newExpense };
+    const combinedData = { ...combinedExpense, exchangeRates: action.data };
     return {
       ...state,
-      expenses: [...state.expenses, combinedExpense],
+      expenses: [...state.expenses, combinedData],
 
     };
   }

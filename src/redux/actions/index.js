@@ -27,12 +27,6 @@ export const requestFailed = (error) => ({
   error,
 });
 
-export const requestAndAddExpense = (expenses) => async (dispatch) => {
-  const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-  const data = await response.json();
-  dispatch(addExpense(expenses, data));
-};
-
 export const requestApi = () => async (dispatch) => {
   try {
     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
@@ -43,4 +37,11 @@ export const requestApi = () => async (dispatch) => {
   } catch (error) {
     dispatch(requestFailed(error));
   }
+};
+
+export const requestAndAddExpense = (expenses) => async (dispatch) => {
+  dispatch(requestApi);
+  const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const data = await response.json();
+  dispatch(addExpense(expenses, data));
 };

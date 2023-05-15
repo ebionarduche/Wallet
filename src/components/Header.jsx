@@ -6,9 +6,9 @@ class Header extends Component {
   render() {
     const { email, expenses } = this.props;
 
-    const total = expenses.reduce((acc, expense) => acc + Number(expense.value), 0)
-      .toFixed(2);
-
+    const total = expenses
+      .reduce((acc, { value, currency, exchangeRates }) => (
+        acc + (Number(value) * exchangeRates[currency].ask), 0).toFixed(2));
     return (
       <div>
         <h1 data-testid="email-field">{ email }</h1>

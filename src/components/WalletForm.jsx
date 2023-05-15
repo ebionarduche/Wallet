@@ -8,8 +8,8 @@ class WalletForm extends Component {
     value: '',
     description: '',
     currency: 'USD',
-    payment: 'Dinheiro',
-    category: 'Alimentação',
+    method: 'Dinheiro',
+    tag: 'Alimentação',
   };
 
   componentDidMount() {
@@ -26,7 +26,7 @@ class WalletForm extends Component {
 
   render() {
     const { currencies, dispatch } = this.props;
-    const { value, description, currency, payment, category } = this.state;
+    const { value, description, currency, method, tag } = this.state;
     return (
       <form>
         <label htmlFor="">
@@ -73,8 +73,8 @@ class WalletForm extends Component {
         <label htmlFor="">
           Forma de Pagamento:
           <select
-            name="payment"
-            value={ payment }
+            name="method"
+            value={ method }
             id=""
             data-testid="method-input"
             onChange={ this.onInputChange }
@@ -88,8 +88,8 @@ class WalletForm extends Component {
         <label htmlFor="">
           Categoria:
           <select
-            name="category"
-            value={ category }
+            name="tag"
+            value={ tag }
             id=""
             data-testid="tag-input"
             onChange={ this.onInputChange }
@@ -110,8 +110,8 @@ class WalletForm extends Component {
               value: '',
               description: '',
               currency: 'USD',
-              payment: 'Dinheiro',
-              category: 'Alimentação',
+              method: 'Dinheiro',
+              tag: 'Alimentação',
             });
           } }
         >
