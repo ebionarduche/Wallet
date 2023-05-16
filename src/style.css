@@ -7,3 +7,8 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+.table {
+  margin: 15px;
+  padding: 10px;
+}
