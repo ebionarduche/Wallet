@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeExpense } from '../redux/actions';
 
 class Table extends Component {
   render() {
-    const { expenses } = this.props;
+    const { expenses, dispatch } = this.props;
     return (
       <table>
         <thead>
@@ -40,7 +41,24 @@ class Table extends Component {
                 <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
                 <td>Real</td>
                 <td>{Number(exchangeRates[currency].ask * value).toFixed(2)}</td>
+                {/* <td>
+                  <button
+                    type="button"
+                    data-testid="edit-btn"
+                  >
+                    Editar
+                  </button>
+                </td> */}
 
+                <td>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    onClick={ () => dispatch(removeExpense(id)) }
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             ))
           }

@@ -1,4 +1,4 @@
-import { REQUEST_SUCCESS, ADD_EXPENSE } from '../actions';
+import { REQUEST_SUCCESS, ADD_EXPENSE, REMOVE_EXPENSE } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
@@ -22,7 +22,14 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses, combinedData],
-
+    };
+  }
+  case REMOVE_EXPENSE: {
+    const newExpenses = state.expenses.filter(({ id }) => id !== action.id);
+    console.log(newExpenses);
+    return {
+      ...state,
+      expenses: newExpenses,
     };
   }
   default:
