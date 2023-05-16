@@ -41,18 +41,18 @@ class Table extends Component {
                 <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
                 <td>Real</td>
                 <td>{Number(exchangeRates[currency].ask * value).toFixed(2)}</td>
-                {/* <td>
+                <td>
                   <button
                     type="button"
+                    className="edit-btn"
                     data-testid="edit-btn"
                   >
                     Editar
                   </button>
-                </td> */}
 
-                <td>
                   <button
                     type="button"
+                    className="remove-btn"
                     data-testid="delete-btn"
                     onClick={ () => dispatch(removeExpense(id)) }
                   >

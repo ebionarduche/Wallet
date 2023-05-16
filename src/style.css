@@ -12,3 +12,17 @@ form {
   margin: 15px;
   padding: 10px;
 }
+
+.remove-btn {
+  background-color: rgb(246, 54, 54);
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+}
+
+.edit-btn {
+  background-color: rgb(5, 136, 3);
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+}

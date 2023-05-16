@@ -7,22 +7,6 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
-export const submitLogin = (email) => ({
-  type: SUBMIT_LOGIN,
-  email,
-});
-
-export const addExpense = (expenses, data) => ({
-  type: ADD_EXPENSE,
-  expenses,
-  data,
-});
-
-export const removeExpense = (id) => ({
-  type: REMOVE_EXPENSE,
-  id,
-});
-
 export const requestSuccess = (currencies) => ({
   type: REQUEST_SUCCESS,
   currencies,
@@ -45,9 +29,25 @@ export const requestApi = () => async (dispatch) => {
   }
 };
 
+export const submitLogin = (email) => ({
+  type: SUBMIT_LOGIN,
+  email,
+});
+
+export const addExpense = (expenses, data) => ({
+  type: ADD_EXPENSE,
+  expenses,
+  data,
+});
+
 export const requestAndAddExpense = (expenses) => async (dispatch) => {
   dispatch(requestApi);
   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
   const data = await response.json();
   dispatch(addExpense(expenses, data));
 };
+
+export const removeExpense = (id) => ({
+  type: REMOVE_EXPENSE,
+  id,
+});
