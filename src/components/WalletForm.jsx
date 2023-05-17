@@ -9,7 +9,6 @@ class WalletForm extends Component {
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
-    // eslint-disable-next-line sonarjs/no-duplicate-string
     tag: 'Alimentação',
   };
 
@@ -17,6 +16,16 @@ class WalletForm extends Component {
     const { dispatch } = this.props;
     dispatch(requestApi());
   }
+
+  resetFormState = () => {
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+    });
+  };
 
   onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -42,13 +51,7 @@ class WalletForm extends Component {
     };
     expenses[idToEdit] = expenseEdit;
     dispatch(editExpenseSubmit(expenses));
-    this.setState({
-      value: '',
-      description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
-    });
+    this.resetFormState();
   };
 
   render() {
@@ -143,13 +146,7 @@ class WalletForm extends Component {
                 onClick={ (event) => {
                   event.preventDefault();
                   dispatch(requestAndAddExpense(this.state));
-                  this.setState({
-                    value: '',
-                    description: '',
-                    currency: 'USD',
-                    method: 'Dinheiro',
-                    tag: 'Alimentação',
-                  });
+                  this.resetFormState();
                 } }
               >
 
