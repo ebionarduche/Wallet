@@ -1,13 +1,14 @@
 form {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 400px;
   justify-content: center;
-  width: 300px;
+  width: 200px;
 }
 
 label {
+  align-items: flex-start;
   color: white;
   display: flex;
   flex-direction: column;
@@ -15,3 +16,23 @@ label {
   margin: 5px;
 }
 
+input {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+select {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

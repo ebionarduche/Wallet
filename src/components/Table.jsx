@@ -43,23 +43,25 @@ class Table extends Component {
                 <td>Real</td>
                 <td>{Number(exchangeRates[currency].ask * value).toFixed(2)}</td>
                 <td>
-                  <button
-                    type="button"
-                    className="edit-btn"
-                    data-testid="edit-btn"
-                    onClick={ () => dispatch(editExpenseInit(id)) }
-                  >
-                    Editar
-                  </button>
+                  <div className="table-btn">
+                    <button
+                      type="button"
+                      className="edit-btn"
+                      data-testid="edit-btn"
+                      onClick={ () => dispatch(editExpenseInit(id)) }
+                    >
+                      Editar
+                    </button>
 
-                  <button
-                    type="button"
-                    className="remove-btn"
-                    data-testid="delete-btn"
-                    onClick={ () => dispatch(removeExpense(id)) }
-                  >
-                    Excluir
-                  </button>
+                    <button
+                      type="button"
+                      className="remove-btn"
+                      data-testid="delete-btn"
+                      onClick={ () => dispatch(removeExpense(id)) }
+                    >
+                      Excluir
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))
