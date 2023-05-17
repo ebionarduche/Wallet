@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { requestAndAddExpense, requestApi, editExpenseSubmit } from '../redux/actions';
+import './WalletForm.css';
 
 class WalletForm extends Component {
   state = {

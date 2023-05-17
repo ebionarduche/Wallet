@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  width: 100vw;
+}
+
+.test {
+  border-left: 5px solid black;
+  display: flex;
+  width: 100vw;
+}

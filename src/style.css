@@ -2,17 +2,6 @@ body {
   background-color: gray;
 }
 
-form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.table {
-  margin: 15px;
-  padding: 10px;
-}
-
 .remove-btn {
   background-color: rgb(246, 54, 54);
   border-radius: 10px;

@@ -1,0 +1,27 @@
+table {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+thead {
+  display: flex;
+  margin: 50px;
+}
+
+th {
+  border-left: 1px solid black;
+  padding: 10px;
+  width: 100px;
+}
+
+th:nth-of-type( 1 ) {
+  border-left: none;
+}
+
+td {
+  border-left: 1px solid black;
+  padding: 10px;
+  width: 100px;
+}
+

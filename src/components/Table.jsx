@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeExpense, editExpenseInit } from '../redux/actions';
+import './Table.css';
 
 class Table extends Component {
   render() {
