@@ -27,15 +27,17 @@ class WalletForm extends Component {
 
   expenseEditSubmit = () => {
     const { value, description, currency, method, tag } = this.state;
-    const { expenses, idToEdit, exchangeRates, dispatch } = this.props;
+    const { expenses, idToEdit, dispatch } = this.props;
+    const { exchangeRates } = expenses[idToEdit];
 
+    console.log(exchangeRates);
     const expenseEdit = {
       value,
       description,
       currency,
       method,
       tag,
-      idToEdit,
+      id: idToEdit,
       exchangeRates, // exchange não ta aparencedo na redux e ainda não esta renderizando, tbm esta tirando o (id), quebra quando add porem pode ser a falta do id
     };
     expenses[idToEdit] = expenseEdit;
@@ -173,7 +175,6 @@ const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
   idToEdit: state.wallet.idToEdit,
   editor: state.wallet.editor,
-  exchangeRates: state.wallet.exchangeRates,
 });
 
 export default connect(mapStateToProps)(WalletForm);
