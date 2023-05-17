@@ -38,8 +38,6 @@ const wallet = (state = INITIAL_STATE, action) => {
     };
   }
   case EDIT_EXPENSE_INIT: {
-    // console.log(action.id);
-    // const test = state.expenses.some(({ id }) => id === action.id);
     return {
       ...state,
       editor: true,

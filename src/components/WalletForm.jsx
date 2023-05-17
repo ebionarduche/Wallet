@@ -38,7 +38,7 @@ class WalletForm extends Component {
       method,
       tag,
       id: idToEdit,
-      exchangeRates, // exchange não ta aparencedo na redux e ainda não esta renderizando, tbm esta tirando o (id), quebra quando add porem pode ser a falta do id
+      exchangeRates,
     };
     expenses[idToEdit] = expenseEdit;
     dispatch(editExpenseSubmit(expenses));
@@ -134,7 +134,7 @@ class WalletForm extends Component {
               type="button"
               onClick={ this.expenseEditSubmit }
             >
-              Editar
+              Editar despesa
             </button>
           )
             : (

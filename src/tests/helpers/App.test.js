@@ -3,11 +3,13 @@ import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './renderWith';
 import App from '../../App';
 
+const emailShape = 'email-input';
+const passwordShape = 'password-input';
 describe('1 - Login Page', () => {
   it('Verifica se esta renderizado na tela o input de email e senha e um botão de entrar', () => {
     renderWithRouterAndRedux(<App />);
-    const inputEmail = screen.getByTestId('email-input');
-    const inputPassaword = screen.getByTestId('password-input');
+    const inputEmail = screen.getByTestId(emailShape);
+    const inputPassaword = screen.getByTestId(passwordShape);
     const btnSubmit = screen.getByRole('button');
     expect(inputEmail).toBeInTheDocument();
     expect(inputPassaword).toBeInTheDocument();
@@ -15,8 +17,8 @@ describe('1 - Login Page', () => {
   });
   it('Verifica se é possivel digitar nos inputs e se somos redirecionados para /carteira ', () => {
     const { history } = renderWithRouterAndRedux(<App />);
-    const inputEmail = screen.getByTestId('email-input');
-    const inputPassaword = screen.getByTestId('password-input');
+    const inputEmail = screen.getByTestId(emailShape);
+    const inputPassaword = screen.getByTestId(passwordShape);
     const btnSubmit = screen.getByRole('button');
     userEvent.type(inputEmail, 'alguem@alguem.com');
     userEvent.type(inputPassaword, '123456');
@@ -36,6 +38,22 @@ describe('2 - Header ', () => {
 
     expect(emailField).toBeInTheDocument();
     expect(currencieField).toBeInTheDocument();
+  });
+  it('Verifica se exibe corretamente o email digitado', () => {
+    const { history } = renderWithRouterAndRedux(<App />);
+    const inputEmail = screen.getByTestId('email-input');
+    const inputPassaword = screen.getByTestId('password-input');
+    const btnSubmit = screen.getByRole('button');
+
+    userEvent.type(inputEmail, 'test@test.com');
+    userEvent.type(inputPassaword, '123456');
+    userEvent.click(btnSubmit);
+
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/carteira');
+    const emailField = screen.getByTestId('email-field');
+    expect(emailField).toBeInTheDocument();
+    expect(emailField).toHaveTextContent('test@test.com');
   });
 });
 
