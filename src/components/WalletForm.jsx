@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { requestAndAddExpense, requestApi } from '../redux/actions';
+import { requestAndAddExpense, requestApi, editExpenseSubmit } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -9,6 +9,7 @@ class WalletForm extends Component {
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     tag: 'Alimentação',
   };
 
@@ -24,8 +25,32 @@ class WalletForm extends Component {
     });
   };
 
+  expenseEditSubmit = () => {
+    const { value, description, currency, method, tag } = this.state;
+    const { expenses, idToEdit, exchangeRates, dispatch } = this.props;
+
+    const expenseEdit = {
+      value,
+      description,
+      currency,
+      method,
+      tag,
+      idToEdit,
+      exchangeRates, // exchange não ta aparencedo na redux e ainda não esta renderizando, tbm esta tirando o (id), quebra quando add porem pode ser a falta do id
+    };
+    expenses[idToEdit] = expenseEdit;
+    dispatch(editExpenseSubmit(expenses));
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+    });
+  };
+
   render() {
-    const { currencies, dispatch } = this.props;
+    const { currencies, editor, dispatch } = this.props;
     const { value, description, currency, method, tag } = this.state;
     return (
       <form>
@@ -101,24 +126,35 @@ class WalletForm extends Component {
             <option value="Saúde">Saúde</option>
           </select>
         </label>
-        <button
-          type="button"
-          onClick={ (event) => {
-            event.preventDefault();
-            dispatch(requestAndAddExpense(this.state));
-            this.setState({
-              value: '',
-              description: '',
-              currency: 'USD',
-              method: 'Dinheiro',
-              tag: 'Alimentação',
-            });
-          } }
-        >
+        {
+          editor ? (
+            <button
+              type="button"
+              onClick={ this.expenseEditSubmit }
+            >
+              Editar
+            </button>
+          )
+            : (
+              <button
+                type="button"
+                onClick={ (event) => {
+                  event.preventDefault();
+                  dispatch(requestAndAddExpense(this.state));
+                  this.setState({
+                    value: '',
+                    description: '',
+                    currency: 'USD',
+                    method: 'Dinheiro',
+                    tag: 'Alimentação',
+                  });
+                } }
+              >
 
-          Adicionar despesa
-        </button>
-
+                Adicionar despesa
+              </button>
+            )
+        }
       </form>
     );
   }
@@ -127,10 +163,17 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   dispatch: PropTypes.func,
   currencies: PropTypes.array,
+  expenses: PropTypes.array,
+  idToEdit: PropTypes.number,
+  editor: PropTypes.bool,
 }.isRequired;
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  expenses: state.wallet.expenses,
+  idToEdit: state.wallet.idToEdit,
+  editor: state.wallet.editor,
+  exchangeRates: state.wallet.exchangeRates,
 });
 
 export default connect(mapStateToProps)(WalletForm);

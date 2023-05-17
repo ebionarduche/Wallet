@@ -1,4 +1,10 @@
-import { REQUEST_SUCCESS, ADD_EXPENSE, REMOVE_EXPENSE } from '../actions';
+import {
+  REQUEST_SUCCESS,
+  ADD_EXPENSE,
+  REMOVE_EXPENSE,
+  EDIT_EXPENSE_INIT,
+  EDIT_EXPENSE_SUBMIT,
+} from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
@@ -26,12 +32,27 @@ const wallet = (state = INITIAL_STATE, action) => {
   }
   case REMOVE_EXPENSE: {
     const newExpenses = state.expenses.filter(({ id }) => id !== action.id);
-    console.log(newExpenses);
     return {
       ...state,
       expenses: newExpenses,
     };
   }
+  case EDIT_EXPENSE_INIT: {
+    // console.log(action.id);
+    // const test = state.expenses.some(({ id }) => id === action.id);
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.id,
+    };
+  }
+  case EDIT_EXPENSE_SUBMIT:
+    return {
+      ...state,
+      editor: false,
+      idToEdit: 0,
+      expenses: action.editExpense,
+    };
   default:
     return state;
   }
