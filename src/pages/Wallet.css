@@ -11,6 +11,14 @@ body {
 
 }
 
+.login-container {
+  border: 1px solid black;
+  display: flex;
+  margin-left: 30px;
+  width: 100vw;
+
+}
+
 .test {
   border-left: 5px solid black;
   display: flex;

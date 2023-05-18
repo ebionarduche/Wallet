@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { submitLogin } from '../redux/actions/index';
-import './Login.css';
 
 class Login extends Component {
   state = {
@@ -41,41 +40,41 @@ class Login extends Component {
     const { buttonDisable, email } = this.state;
     const { history, dispatch } = this.props;
     return (
-      <form>
-        <label htmlFor="">
-          Email:
-          <input
-            type="email"
-            name="email"
-            id=""
-            onChange={ this.onInputChange }
-            data-testid="email-input"
-          />
-        </label>
-
-        <label htmlFor="">
-          Senha:
-          <input
-            type="password"
-            name="password"
-            id=""
-            onChange={ this.onInputChange }
-            data-testid="password-input"
-          />
-        </label>
-
-        <button
-          type="submit"
-          disabled={ buttonDisable }
-          onClick={ (event) => {
-            event.preventDefault();
-            history.push('/carteira');
-            dispatch(submitLogin(email));
-          } }
-        >
-          Entrar
-        </button>
-      </form>
+      <div className="login-form">
+        <form>
+          <label htmlFor="">
+            Email:
+            <input
+              type="email"
+              name="email"
+              id=""
+              onChange={ this.onInputChange }
+              data-testid="email-input"
+            />
+          </label>
+          <label htmlFor="">
+            Senha:
+            <input
+              type="password"
+              name="password"
+              id=""
+              onChange={ this.onInputChange }
+              data-testid="password-input"
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={ buttonDisable }
+            onClick={ (event) => {
+              event.preventDefault();
+              history.push('/carteira');
+              dispatch(submitLogin(email));
+            } }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     );
   }
 }
