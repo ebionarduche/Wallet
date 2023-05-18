@@ -59,11 +59,12 @@ class WalletForm extends Component {
     const { currencies, editor, dispatch } = this.props;
     const { value, description, currency, method, tag } = this.state;
     return (
-      <div>
+      <div className="walletform-main">
         <form>
           <label htmlFor="">
             Valor:
             <input
+              autoComplete="off"
               type="number"
               name="value"
               value={ value }
@@ -75,6 +76,7 @@ class WalletForm extends Component {
           <label htmlFor="">
             Descrição:
             <input
+              autoComplete="off"
               type="text"
               name="description"
               value={ description }
@@ -84,7 +86,7 @@ class WalletForm extends Component {
             />
           </label>
           <label htmlFor="">
-            Moeda
+            Moeda:
             <select
               name="currency"
               value={ currency }
@@ -134,6 +136,7 @@ class WalletForm extends Component {
           {
             editor ? (
               <button
+                className="btn-edit-despesa"
                 type="button"
                 onClick={ this.expenseEditSubmit }
               >
@@ -142,6 +145,7 @@ class WalletForm extends Component {
             )
               : (
                 <button
+                  className="btn-add-despesa"
                   type="button"
                   onClick={ (event) => {
                     event.preventDefault();

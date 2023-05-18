@@ -1,18 +1,21 @@
 form {
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.301);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 450px;
   justify-content: center;
-  width: 200px;
+  margin-top: 30px;
+  width: 400px;
 }
 
 label {
-  align-items: flex-start;
+  align-items: center;
   color: white;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 24px;
   margin: 5px;
 }
 
@@ -20,19 +23,49 @@ input {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 20px;
   justify-content: center;
+  margin: 2px;
+  width: 250px;
 }
 
 select {
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
+  height: 25px;
   justify-content: center;
+  margin: 2px;
+  text-align: center;
+  width: 250px;
 }
 
 .form-options {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 25px;
   justify-content: center;
+  margin: 2px;
+}
+
+.btn-add-despesa {
+  background-color: rgb(86, 202, 51);
+  border-radius: 10px;
+  color: rgba(0, 38, 4, 0.724);
+  font-size: 18px;
+  height: 40px;
+  margin-top: 10px;
+  width: 180px;
+}
+
+.btn-edit-despesa {
+  background-color: rgb(66, 224, 245);
+  border-radius: 10px;
+  color: rgba(0, 23, 41, 0.724);
+  font-size: 18px;
+  height: 40px;
+  margin-top: 10px;
+  width: 150px;
 }

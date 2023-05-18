@@ -1,6 +1,14 @@
+body {
+  background-color: rgb(91, 164, 22);
+}
+
 .container {
+  align-items: flex-start;
+  border: 1px solid black;
   display: flex;
+  margin-left: 30px;
   width: 100vw;
+
 }
 
 .test {

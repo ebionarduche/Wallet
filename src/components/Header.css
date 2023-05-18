@@ -1,7 +1,12 @@
 .header-div {
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.568);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-right: 100px;
+  margin-top: 0;
+  width: 100vw;
+
 }
 
 .header-currency {
@@ -9,3 +14,7 @@
   flex-direction: row;
 }
 
+.web-wallet-img {
+  border-radius: 100%;
+  width: 150px;
+}
